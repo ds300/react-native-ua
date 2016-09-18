@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		51AC194D1CE4ACED00EF7E09 /* ReactNativeUAIOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51AC194C1CE4ACED00EF7E09 /* ReactNativeUAIOS.h */; };
 		51AC194F1CE4ACED00EF7E09 /* ReactNativeUAIOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AC194E1CE4ACED00EF7E09 /* ReactNativeUAIOS.m */; };
-		51AC1BB41CE4AE8300EF7E09 /* libUAirship-7.1.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AC1AE01CE4AE8300EF7E09 /* libUAirship-7.1.1.a */; };
 		51AC1D111CE4CC9000EF7E09 /* AirshipResources.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51AC1A891CE4AE8300EF7E09 /* AirshipResources.bundle */; };
+		5FA27FB21D8EF400008B95FB /* libUAirship-8.0.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA27FB11D8EF400008B95FB /* libUAirship-8.0.1.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -228,6 +228,7 @@
 		51AC1CB61CE4C41100EF7E09 /* RCTWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTWrapperViewController.h; sourceTree = "<group>"; };
 		51AC1CB71CE4C41100EF7E09 /* UIView+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Private.h"; sourceTree = "<group>"; };
 		51AC1CB81CE4C41100EF7E09 /* UIView+React.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+React.h"; sourceTree = "<group>"; };
+		5FA27FB11D8EF400008B95FB /* libUAirship-8.0.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libUAirship-8.0.1.a"; path = "Libraries/Airship/libUAirship-8.0.1.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,7 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51AC1BB41CE4AE8300EF7E09 /* libUAirship-7.1.1.a in Frameworks */,
+				5FA27FB21D8EF400008B95FB /* libUAirship-8.0.1.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +249,7 @@
 				51AC19561CE4AD6600EF7E09 /* LIbraries */,
 				51AC194B1CE4ACED00EF7E09 /* ReactNativeUAIOS */,
 				51AC194A1CE4ACED00EF7E09 /* Products */,
+				5FA27FB01D8EF3FF008B95FB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -538,6 +540,14 @@
 			path = Libraries/React;
 			sourceTree = "<group>";
 		};
+		5FA27FB01D8EF3FF008B95FB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5FA27FB11D8EF400008B95FB /* libUAirship-8.0.1.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -717,6 +727,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/**",
+					"$(PROJECT_DIR)/Libraries/Airship",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -731,6 +742,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/**",
+					"$(PROJECT_DIR)/Libraries/Airship",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";

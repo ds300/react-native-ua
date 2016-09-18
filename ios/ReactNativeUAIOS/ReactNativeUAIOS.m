@@ -3,7 +3,6 @@
 #import "RCTBridge.h"
 #import "RCTEventDispatcher.h"
 #import "ReactNativeUAIOS.h"
-#import "UALocationService.h"
 #import "UAAction.h"
 #import "UAActionRegistry.h"
 #import "UAOpenExternalURLAction.h"
@@ -102,7 +101,7 @@ RCT_EXPORT_METHOD(removeTag:(NSString *)tag) {
 }
 
 RCT_EXPORT_METHOD(setNamedUserId:(NSString *)nameUserId) {
-    [UAirship push].namedUser.identifier = nameUserId;
+    [UAirship namedUser].identifier = nameUserId;
 }
 
 RCT_EXPORT_METHOD(handleBackgroundNotification) {
@@ -119,26 +118,6 @@ RCT_EXPORT_METHOD(handleBackgroundNotification) {
     }
 }
 
-RCT_EXPORT_METHOD(enableGeolocation) {
-    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
-        static CLLocationManager* lm = nil;
-        static dispatch_once_t once;
-        
-        dispatch_once(&once, ^ {
-            // Code to run once
-            lm = [[CLLocationManager alloc] init];
-        });
-        
-        [lm requestAlwaysAuthorization];
-        
-        [UAirship shared].locationService.requestAlwaysAuthorization = YES;
-        [UALocationService locationServicesEnabled];
-        [UALocationService locationServiceAuthorized];
-        [UALocationService airshipLocationServiceEnabled];
-        [UALocationService setAirshipLocationServiceEnabled:YES];
-        [UALocationService coreLocationWillPromptUserForPermissionToRun];
-    }
-}
 
 RCT_EXPORT_METHOD(enableActionUrl) {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"enable_action_url"];
