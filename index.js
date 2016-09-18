@@ -106,6 +106,10 @@ class ReactNativeUA {
         notification_listeners.push(callback);
     }
 
+    static channelId (callback) {
+      bridge.channelId(callback);
+    }
+
 }
 
 export default ReactNativeUA
