@@ -106,8 +106,8 @@ class ReactNativeUA {
         notification_listeners.push(callback);
     }
 
-    static channelId (callback) {
-      bridge.channelId(callback);
+    static channelId () {
+      bridge.channelId();
     }
 
 }
