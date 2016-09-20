@@ -158,6 +158,12 @@ RCT_EXPORT_METHOD(disableActionUrl) {
     NSLog(@"Desabilitou o comportamento DEFAULT da action URL -> %@", isActionUrl ? @"YES": @"NO");
 }
 
+RCT_EXPORT_METHOD(provideChannelId:(RCTResponseSenderBlock)callback)
+{
+    NSString *channelID = [UAirship push].channelID;
+    callback(@[channelID]);
+}
+
 @end
 
 

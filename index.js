@@ -106,6 +106,20 @@ class ReactNativeUA {
         notification_listeners.push(callback);
     }
 
+    static provideChannelId (callback) {
+      function tick () {
+        bridge.provideChannelId(function (channelId) {
+          if (channelId) {
+            console.info("📺 got channel ID:", channelId);
+            callback(channelId);
+          } else {
+            console.info("📺 channelId not set yet");
+            setTimeout(tick, 1000)
+          }
+        });
+      }
+      tick();
+    }
 }
 
 export default ReactNativeUA
