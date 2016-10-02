@@ -52,6 +52,10 @@ static PushHandler *pushHandler = nil;
 
 RCT_EXPORT_MODULE()
 
+RCT_EXPORT_METHOD(updateNotificationState:(BOOL)enabled) {
+    [UAirship push].userPushNotificationsEnabled = enabled;
+}
+
 RCT_EXPORT_METHOD(enableNotification) {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
