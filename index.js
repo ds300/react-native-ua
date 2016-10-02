@@ -66,6 +66,10 @@ switch (Platform.OS) {
 
 class ReactNativeUA {
 
+    static update_notification_state (enabled) {
+        bridge.updateNotificationState(enabled);
+    }
+
     static enable_notification () {
         bridge.enableNotification();
     }
