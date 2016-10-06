@@ -165,7 +165,7 @@ RCT_EXPORT_METHOD(disableActionUrl) {
 RCT_EXPORT_METHOD(provideChannelId:(RCTResponseSenderBlock)callback)
 {
     NSString *channelID = [UAirship push].channelID;
-    callback(@[channelID]);
+    callback(channelID ? @[channelID] : @[]);
 }
 
 @end
