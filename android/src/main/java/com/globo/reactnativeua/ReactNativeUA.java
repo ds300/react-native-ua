@@ -10,6 +10,7 @@ import android.util.Log;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.Callback;
 import com.urbanairship.Autopilot;
 import com.urbanairship.UAirship;
 import com.urbanairship.push.notifications.DefaultNotificationFactory;
@@ -93,6 +94,13 @@ public class ReactNativeUA extends ReactContextBaseJavaModule {
     public void disableActionUrl() {
         PreferencesManager.getInstance().setEnabledActionUrl(false);
         Log.d("ActionUrl", "Disable default action url behaviour -> False");
+    }
+    
+    @ReactMethod
+    public void provideChannelId(Callback callback)
+    {
+        String channelId = UAirship.shared().getPushManager().getChannelId();
+        callback.invoke(channelId != null ? channelId : "");
     }
 
     @ReactMethod
