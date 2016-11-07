@@ -27,7 +27,12 @@ public class ReactNativeUA extends ReactContextBaseJavaModule {
     public String getName() {
         return "ReactNativeUAAndroid";
     }
-
+    
+    @ReactMethod
+    public void updateNotificationState(boolean enabled) {
+        UAirship.shared().getPushManager().setUserNotificationsEnabled(enabled);
+    }
+    
     @ReactMethod
     public void enableNotification() {
         UAirship.shared().getPushManager().setUserNotificationsEnabled(true);
