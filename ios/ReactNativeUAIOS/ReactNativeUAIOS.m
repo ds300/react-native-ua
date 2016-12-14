@@ -263,7 +263,7 @@ RCT_EXPORT_METHOD(provideChannelId:(RCTResponseSenderBlock)callback)
 }
 
 -(UNNotificationPresentationOptions) presentationOptionsForNotification:(UNNotification *)notification {
-    return UNNotificationPresentationOptionAlert;
+    return UNNotificationPresentationOptionNone;
 }
 
 
