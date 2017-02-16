@@ -36,7 +36,7 @@ public class ReactNativeUAReceiverHelper implements LifecycleEventListener {
 
     @Override
     public void onHostResume() {
-        sendPushIntent();
+        // Don't do this due to async state restoration: sendPushIntent();
     }
 
     @Override
