@@ -1,5 +1,5 @@
-#import "RCTBridge.h"
-#import "RCTEventDispatcher.h"
+#import <React/RCTBridge.h>
+#import <React/RCTEventDispatcher.h>
 #import "ReactNativeUAIOS.h"
 #import "AirshipLib.h"
 
@@ -19,8 +19,10 @@ static PushHandler *pushHandler = nil;
 }
 
 + (void)setupUrbanAirship:(NSDictionary *) launchOptions {
-    UAConfig *config = [UAConfig defaultConfig];
+    [self setupUrbanAirship:launchOptions withConfig:[UAConfig defaultConfig]];
+}
 
++ (void)setupUrbanAirship:(NSDictionary *) launchOptions withConfig:(UAConfig *)config {
     [UAirship takeOff:config];
 
     pushHandler = [[PushHandler alloc] init];
@@ -154,6 +156,21 @@ RCT_EXPORT_METHOD(provideChannelId:(RCTResponseSenderBlock)callback)
 {
     NSString *channelID = [UAirship push].channelID;
     callback(channelID ? @[channelID] : @[]);
+}
+
+RCT_EXPORT_METHOD(setQuietTime:(NSDictionary *)time) {
+    [[UAirship push] setQuietTimeStartHour:[time[@"startHour"] unsignedIntegerValue] startMinute:[time[@"startMinute"] unsignedIntegerValue] endHour:[time[@"endHour"] unsignedIntegerValue] endMinute:[time[@"endMinute"] unsignedIntegerValue]];
+    [[UAirship push] updateRegistration];
+}
+
+RCT_EXPORT_METHOD(setQuietTimeEnabled:(nonnull NSNumber *)enabled) {
+    [[UAirship push] setQuietTimeEnabled:[enabled boolValue]];
+    [[UAirship push] updateRegistration];
+}
+
+RCT_EXPORT_METHOD(areNotificationsEnabled:(RCTResponseSenderBlock)callback) {
+    BOOL enabled = [UAirship push].authorizedNotificationOptions != 0;
+    callback(@[ @(enabled) ]);
 }
 
 @end
